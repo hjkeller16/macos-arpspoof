@@ -6,8 +6,8 @@ CC="gcc"
 LDFLAGS="-lnet -lpcap"
 CFLAGS="-g -O2 -D_BSD_SOURCE -DHAVE_SOCKADDR_SA_LEN -DLIBNET_BSDISH_OS\
   -DLIBNET_BSD_BYTE_SWAP"
-LIBPCAP="/usr/local/opt/libpcap"
-LIBNET="/usr/local/opt/libnet"
+LIBPCAP="/opt/homebrew/Cellar/libpcap/1.10.3"
+LIBNET="/opt/homebrew/Cellar/libnet/1.2"
 SRCS="arpspoof.c arp.c"
 BIN_PREFIX=
 
@@ -119,19 +119,19 @@ build_deps(){
   log "Searching for dependencies..."
   if [ ! -d "$LIBPCAP" ]; then
     log "Installing libpcap..."
-    "$hb_cli" "install" "homebrew/dupes/libpcap" >> $LOGFILE 2>&1 0>&1
-    if [ $? -ne 0 ] || [ ! -d "$LIBPCAP" ]; then
-      log "Unable to install libpcap, check the $LOGFILE for more information"
-      exit 1
-    fi
+    # "$hb_cli" "install" "homebrew/dupes/libpcap" >> $LOGFILE 2>&1 0>&1
+    # if [ $? -ne 0 ] || [ ! -d "$LIBPCAP" ]; then
+    #   log "Unable to install libpcap, check the $LOGFILE for more information"
+    #   # exit 1
+    # fi
   fi
   if [ ! -d "$LIBNET" ]; then
     log "Installing libnet..."
-    "$hb_cli" "install" "libnet" >> $LOGFILE 2>&1 0>&1
-    if [ $? -ne 0 ] || [ ! -d "$LIBNET" ]; then
-      log "Unable to install libnet, check the $LOGFILE for more information"
-      exit 1
-    fi
+    # "$hb_cli" "install" "libnet" >> $LOGFILE 2>&1 0>&1
+    # if [ $? -ne 0 ] || [ ! -d "$LIBNET" ]; then
+    #   log "Unable to install libnet, check the $LOGFILE for more information"
+    #   exit 1
+    # fi
   fi
 }
 
